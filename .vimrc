@@ -11,16 +11,6 @@ set backspace=indent,eol,start  " backspace through everything in insert mode
 set paste
 set noeb vb t_vb=               " no beeping
 
-" IMPORTANT: grep will sometimes skip displaying the file name if you
-" search in a singe file. This will confuse Latex-Suite. Set your grep
-" program to always generate a file-name.
-set grepprg=grep\ -nH\ $*
-
-" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
-
 filetype plugin indent on       " load file type plugins + indentation
 
 "" Searching
@@ -36,9 +26,12 @@ call vundle#rc()
 " let Vundle manage Vundle
 " required! 
 Bundle 'gmarik/vundle'
+
+" Plugins
 Bundle 'tpope/vim-fugitive'
 Bundle 'sjl/gundo.vim'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'kien/ctrlp.vim'
 
 " gundo
 nnoremap <F5> :GundoToggle<CR>
@@ -54,3 +47,7 @@ set undodir=~/.vim/undodir
 set undofile
 set undolevels=1000
 set undoreload=10000
+
+" everyone hates .swp files
+set nobackup
+set noswapfile
